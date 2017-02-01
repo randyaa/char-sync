@@ -3,7 +3,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { MaterialModule } from '@angular/material';
+
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+import 'hammerjs';
+
 import { AppComponent } from './app.component';
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: `somethinghere`,
+  authDomain: 'char-sync.firebaseapp.com',
+  databaseURL: 'https://char-sync.firebaseio.com/',
+  // storageBucket: '<your-storage-bucket>',
+  messagingSenderId: 'char-sync'
+};
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 
 @NgModule({
   declarations: [
@@ -12,7 +31,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MaterialModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
