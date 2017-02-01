@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: `somethinghere`,
+  apiKey: `AIzaSyAleFS_HYgMIW49o2DQykDGddB4N1zLLZI`,
   authDomain: 'char-sync.firebaseapp.com',
   databaseURL: 'https://char-sync.firebaseio.com/',
   // storageBucket: '<your-storage-bucket>',
