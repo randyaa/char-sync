@@ -10,6 +10,7 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { CharacterComponent } from './character/character.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -26,13 +27,14 @@ const myFirebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [],

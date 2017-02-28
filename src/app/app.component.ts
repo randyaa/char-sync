@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import {AngularFire, FirebaseListObservable, AuthMethods} from 'angularfire2';
 import {FirebaseOperation} from "angularfire2/database";
 
+import {Character} from "./character/character.model";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,28 +13,16 @@ import {FirebaseOperation} from "angularfire2/database";
 export class AppComponent {
   characters$: FirebaseListObservable<Character[]>;
 
-  hpUp(character:Character) {
-    let workableCharacter = Object.assign({},character);
-    workableCharacter.hp += 1;
-    this.characters$.update(workableCharacter.$key,{hp:workableCharacter.hp});
-  }
-
-  hpDown(character:Character) {
-    let workableCharacter = Object.assign({},character);
-    workableCharacter.hp -= 1;
-    this.characters$.update(workableCharacter.$key,{hp:workableCharacter.hp});
-  }
-
-  reset(character:Character) {
-    let workableCharacter = Object.assign({},character);
-    workableCharacter.hp = workableCharacter.maxHp;
-    this.characters$.update(workableCharacter.$key,{hp:workableCharacter.hp});
-  }
-
   constructor(private af: AngularFire) {
     af.auth.subscribe((auth) => {
       console.log(auth);
-      this.characters$ = af.database.list('/characters');
+      //see https://github.com/angular/angularfire2/blob/561e7b71f50454c8e1572e9d61b586f00850dbdd/docs/4-querying-lists.md for options
+      this.characters$ = af.database.list('/characters', {
+        query:{
+          orderByChild:'initiative',
+          // limitToLast:5
+        }
+      });
     });
   }
 
@@ -43,15 +33,4 @@ export class AppComponent {
   logout() {
     this.af.auth.logout();
   }
-}
-
-
-export interface Character {
-  $key?: string;
-  name: string;
-  alignment: string;
-  class: string;
-  hp: number;
-  maxHp: number;
-  race: string;
 }
