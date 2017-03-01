@@ -14,6 +14,7 @@ import { CharacterComponent } from './character/character.component';
 import {CharacterListComponent} from './character/character-list.component';
 import {CharacterService} from "./character/character.service";
 import {NewCharacterDialog} from "./character/new-character-dialog";
+import {UserService} from "./user/user.service";
 
 // Must export the config
 export const firebaseConfig = {
@@ -46,6 +47,7 @@ const myFirebaseAuthConfig = {
   ],
   providers: [
     CharacterService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

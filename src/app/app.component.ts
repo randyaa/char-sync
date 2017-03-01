@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import {AngularFire, FirebaseListObservable, AuthMethods} from 'angularfire2';
-import {FirebaseOperation} from "angularfire2/database";
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 import {Character} from "./character/character.model";
 import {CharacterService} from "./character/character.service";
+import {UserService} from "./user/user.service";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,10 @@ import {CharacterService} from "./character/character.service";
 export class AppComponent {
   characters$: FirebaseListObservable<Character[]>;
 
-  constructor(private af: AngularFire, private characterService:CharacterService) {
+  constructor(private af: AngularFire,
+              private characterService:CharacterService,
+              private userService:UserService,
+  ) {
     af.auth.subscribe((auth) => {
       this.characterService.setAuth(auth);
       console.log(auth);
