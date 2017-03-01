@@ -1,0 +1,75 @@
+<form #newCharacterForm="ngForm">
+  <md-input-container>
+    <input mdInput type="text"
+           id="name"
+           placeholder="Name"
+           required
+           [(ngModel)]="newCharacter.name"
+           name="name"
+           #name="ngModel"
+    >
+    <md-hint align="end">name is required</md-hint>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="text"
+           id="alignment"
+           placeholder="Alignment"
+           required
+           [(ngModel)]="newCharacter.alignment"
+           name="alignment"
+           #alignment="ngModel"
+    >
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="text"
+           id="class"
+           placeholder="Class"
+           required
+           [(ngModel)]="newCharacter.class"
+           name="class"
+           #class="ngModel"
+    >
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="number"
+           id="hp"
+           placeholder="Current Hit Points"
+           required
+           [(ngModel)]="newCharacter.hp"
+           name="hp"
+           #hp="ngModel"
+    >
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="number"
+           id="maxhp"
+           placeholder="Max Hit Points"
+           required
+           [(ngModel)]="newCharacter.maxHp"
+           name="maxhp"
+           #maxHp="ngModel"
+    >
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="text"
+           id="race"
+           placeholder="Race"
+           required
+           [(ngModel)]="newCharacter.race"
+           name="race"
+           #race="ngModel"
+    >
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="number"
+           id="initiative"
+           placeholder="Initiative"
+           required
+           [(ngModel)]="newCharacter.initiative"
+           name="initiative"
+           #initiative="ngModel"
+    >
+  </md-input-container>
+  <button (click)="dialogRef.close(newCharacter)" md-button color="primary" [disabled]="!newCharacterForm.form.valid">Save</button>
+  <button (click)="dialogRef.close()" md-button color="warn">Cancel</button>
+</form>

@@ -11,6 +11,9 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { CharacterComponent } from './character/character.component';
+import {CharacterListComponent} from './character/character-list.component';
+import {CharacterService} from "./character/character.service";
+import {NewCharacterDialog} from "./character/new-character-dialog";
 
 // Must export the config
 export const firebaseConfig = {
@@ -28,8 +31,11 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterComponent
+    CharacterComponent,
+    CharacterListComponent,
+    NewCharacterDialog
   ],
+  entryComponents: [NewCharacterDialog],
   imports: [
     BrowserModule,
     FormsModule,
@@ -38,7 +44,9 @@ const myFirebaseAuthConfig = {
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
-  providers: [],
+  providers: [
+    CharacterService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

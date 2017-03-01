@@ -7,4 +7,5 @@ export interface Character {
   maxHp: number;
   race: string;
   initiative: number;
+  owner: string;
 }
