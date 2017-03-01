@@ -8,7 +8,7 @@
     <button md-button color="warn" (click)="reset(character)">reset</button>
     <!--<h3>{{character.initiative}}</h3>-->
     <md-input-container>
-      <input [ngModel]="character.initiative>0?character.initiative:-1*character.initiative" (ngModelChange)="setInitiative($event)" mdInput type="number" placeholder="Initiative">
+      <input [value]="character.initiative>0?character.initiative:-1*character.initiative" [formControl]="initiativeInputControl" mdInput type="number" placeholder="Initiative">
     </md-input-container>
 
   </md-card-content>
